@@ -44,10 +44,11 @@ public class ClubLogonServlet extends HttpServlet {
         String msg = "";
         Member m;
         String userId = "";
+        long pwAttempt;
         
         /*
         String sql = "";
-        long pwAttempt;
+        
         String dbUrl = "jdbc:mysql://localhost:3306/club?useSSL=false";
         String dbUser = "root";
         String dbPw = "sesame";
@@ -58,7 +59,15 @@ public class ClubLogonServlet extends HttpServlet {
             if (m == null) {
                 msg = "No member record retrieved<br/>";
             } else {
-                msg = "Member " + m.getLname() + " found.";
+                //msg = "Member " + m.getLname() + " found.";
+                pwAttempt = Long.parseLong(request.getParameter("password").trim());
+                m.setPwAttempt(pwAttempt);
+                if (m.isAuthenticated()) {
+                    url = "/MemberScreen.jsp";
+                    request.getSession().setAttribute("m", m);
+                } else {
+                    msg = "unable to authenticate<br/>";
+                }
             }
             //pwAttempt = Long.parseLong(request.getParameter("password").trim());
             /*

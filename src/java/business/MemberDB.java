@@ -6,6 +6,7 @@
 package business;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
 /**
  *
@@ -24,5 +25,23 @@ public class MemberDB {
         } finally {
             manager.close();
         }
+    }
+    
+    public static String updateMember(Member m) {
+        String msg = "";
+        EntityManager manager = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = manager.getTransaction();
+        try {
+            trans.begin();
+            manager.merge(m);
+            trans.commit();
+            msg = "Member " + m.getMemID() + " updated.<br/>";
+        } catch (Exception e) {
+            msg = "Error on Member Update: " + e.getMessage() + "<br/>";
+            trans.rollback();
+        } finally {
+            manager.close();
+        }
+        return msg;
     }
 }
