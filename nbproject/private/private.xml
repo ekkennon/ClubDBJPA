@@ -3,15 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/raefo/OneDrive/programming/java/Java3/ClubDbJpa/web/MemberScreen.jsp</file>
-            <file>file:/C:/Users/raefo/OneDrive/programming/java/Java3/ClubDbJpa/src/java/business/MemberDB.java</file>
+            <file>file:/C:/Users/raefo/OneDrive/programming/java/Java3/ClubDbJpa/web/Purchases.jsp</file>
             <file>file:/C:/Users/raefo/OneDrive/programming/java/Java3/ClubDbJpa/src/java/business/Purchase.java</file>
-            <file>file:/C:/Users/raefo/OneDrive/programming/java/Java3/ClubDbJpa/src/java/servlets/MemberUpdateServlet.java</file>
-            <file>file:/C:/Users/raefo/OneDrive/programming/java/Java3/ClubDbJpa/src/java/business/DBUtil.java</file>
+            <file>file:/C:/Users/raefo/OneDrive/programming/java/Java3/ClubDbJpa/src/java/business/PCodes.java</file>
             <file>file:/C:/Users/raefo/OneDrive/programming/java/Java3/ClubDbJpa/src/java/business/PurchaseDB.java</file>
-            <file>file:/C:/Users/raefo/OneDrive/programming/java/Java3/ClubDbJpa/src/java/servlets/ClubLogonServlet.java</file>
-            <file>file:/C:/Users/raefo/OneDrive/programming/java/Java3/ClubDbJpa/web/Logon.jsp</file>
-            <file>file:/C:/Users/raefo/OneDrive/programming/java/Java3/ClubDbJpa/src/java/business/Member.java</file>
+            <file>file:/C:/Users/raefo/OneDrive/programming/java/Java3/ClubDbJpa/src/java/servlets/ShowPurchasesServlet.java</file>
         </group>
     </open-files>
 </project-private>

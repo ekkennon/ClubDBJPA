@@ -10,6 +10,9 @@ import business.Purchase;
 import business.PurchaseDB;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -39,14 +42,39 @@ public class ShowPurchasesServlet extends HttpServlet {
         String url = "/MemberScreen.jsp";
         List<Purchase> p;
         String msg = "";
+        SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
+        Date pd = null;
+        String mo = "";
+        String day = "";
+        String year = "";
         
         try {
             Member m = (Member) request.getSession().getAttribute("m");
-            p = PurchaseDB.getPurchases(m.getMemID());
+            
+            mo = request.getParameter("month");
+            day = request.getParameter("day");
+            year = request.getParameter("year");
+            
+            if (!mo.isEmpty() && !day.isEmpty() && !year.isEmpty()) {
+                try {
+                pd = formatter.parse(mo + "-" + day + "-" + year);
+                } catch (ParseException e) {
+                    pd = null;
+                }
+            }
+            
+            if (pd == null) {
+                p = PurchaseDB.getPurchases(m.getMemID());
+            } else {
+                p = PurchaseDB.getPurchases(m.getMemID(), pd);
+            }
+            
             if (p == null) {
                 msg = "Purchases list returned null<br/>";
             } else {
-                msg = "Purchases list had " + p.size() + " entries.";
+                msg = p.size() + " purchase records.";
+                url = "/Purchases.jsp";
+                request.setAttribute("purchases", p);
             }
         } catch (Exception e) {
             msg = "Servlet Exception: " + e.getMessage() + "<br/>";
